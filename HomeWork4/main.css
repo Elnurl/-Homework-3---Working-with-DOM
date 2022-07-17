@@ -1,0 +1,101 @@
+body {
+  background: #f2f2f2;
+}
+
+.header {
+  font-family: "Nunito Sans";
+  background-color: white;
+
+  font-weight: 800;
+  font-size: 15px;
+  line-height: 20px;
+  position: absolute;
+  width: 1440px;
+  height: 80px;
+  left: 10px;
+  top: 0px;
+
+  right: 0%;
+
+  bottom: 0%;
+
+  background: #ffffff;
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.0562443);
+}
+header h1 {
+  position: absolute;
+  top: 25%;
+  height: 30px;
+  left: 5%;
+  right: 75%;
+
+  color: #111517;
+}
+.random-country {
+  display: flex;
+}
+.container {
+  left: 80px;
+  top: 280px;
+}
+.cart-body {
+  display: flex;
+  justify-content: space-between;
+}
+img {
+  position: absolute;
+  height: 401px;
+  width: 560px;
+  left: 80px;
+  top: 200px;
+  border-radius: 15px;
+}
+.common {
+  display: flex;
+  justify-content: space-around;
+}
+.Title {
+  position: absolute;
+  height: 323px;
+  width: 598px;
+  left: 760px;
+  top: 250px;
+  border-radius: 0px;
+
+  font-family: "Nunito Sans";
+  font-style: normal;
+
+  font-size: 16px;
+  line-height: 32px;
+  /* or 200% */
+
+  color: #111517;
+}
+.title {
+  border: none;
+}
+
+.input {
+  display: inline-block;
+  position: absolute;
+  height: 56px;
+  width: 480px;
+  left: 50%;
+  top: 20%;
+  transform: translate(-50%, -50%);
+  border-radius: 15px;
+}
+.input input {
+  height: 56px;
+  width: 400px;
+}
+.input button {
+  height: 56px;
+}
+.result {
+  font-family: Nunito Sans;
+  position: absolute;
+  font-weight: bolder;
+  left: 80px;
+  top: 128px;
+}

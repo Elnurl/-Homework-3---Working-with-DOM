@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CountrySearch</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="main.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat&family=Nunito+Sans:wght@600;700&display=swap" rel="stylesheet">
+    <script src="main.js"></script>
+  </head>
+  <body>
+   
+   <header class="header"> <h1 class="h1">Where in the world?</h1>
+    <div class="theme"></div></header>
+    <div class="container">
+      <div class="input">
+       
+        <input
+          id="search"
+          class="form"
+          type="search" 
+          style="font-family: Nunito Sans"
+          placeholder= " Search for a country…"
+          hidefocus="true"
+          
+        />
+        <button id="btn-search" type="button" class="btn">Search</button>
+      </div>
+    </div>
+    <div class="searchResult" id="country-details">
+   
+    </div>
+   
+      </div>
+    </div>
+    <script>
+      document
+        .querySelector("#btn-search")
+        .addEventListener("click", function () {
+          let text = document.querySelector("#search").value;
+          getCountry(text);
+        });
+
+      function getCountry(country) {
+        const request = new XMLHttpRequest();
+        request.open("GET", "https://restcountries.com/v3.1/name/" + country);
+        request.send();
+
+        request.addEventListener("load", function () {
+          const data = JSON.parse(this.responseText);
+          console.log(typeof data);
+          console.log(data);
+          setCountry(data[0]);
+        });
+      }
+      function setCountry(data) {
+        
+        let html = `<div class="result">Search Result:</div>
+    <div class="common">
+       <div class="Hed">    
+      <img src="${data.flags.png}" alt="" />
+  </div>
+     <div  class="Title">
+      <div>
+      <h3 class="title">Native name :${data.name.common}</h3>
+      <hr />
+      <div>
+        <div>Population:${data.population}</div>
+      </div>
+      <div>
+        <div>Capital:${data.capital[0]}</div>
+      </div>
+      <div>
+        <div>Region:${data.region}</div>
+      </div>
+      <div>
+        <div>Subregion:${data.subregion}</div>
+      </div>
+      <div>
+        <div>Currencie:${Object.values(data.currencies)[0].name}(${Object.values(data.currencies)[0].symbol})</div>
+      </div><div>
+        <div>Language:${Object.values(data.languages)}</div>
+      </div>
+    </div></div></div>
+        
+       `
+        ;
+        /* const html = ` <div class="col">
+            <div class="cart">
+            <img src="${data.flags.png}" class="cardimg" alt="" />
+            </div>
+          </div>
+          <div class="cart-body">
+            <h5 class="title"> Native name:${data.name.common}</h5>
+          <ul class="list">
+            <li class="lists">Population:${data.population}</li>
+            <li class="lists">Capital:${data.capital[0]}</li>
+            <li class="lists">Region:${data.region}</li>
+            <li class="lists">Subregion:${data.subregion}</li>
+            <li class="lists">Currencie:${Object.values(data.currencies)}</li>
+            <li class="lists">Language:${Object.values(data.languages)}</li>
+          </ul>
+          </div>
+        `;*/
+        document.querySelector("#country-details").innerHTML = html;
+      }
+    </script>
+  </body>
+</html>
